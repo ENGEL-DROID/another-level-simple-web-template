@@ -2,6 +2,6 @@
 
 A super very simple web template start design
 
-live: 
+live: https://another-level-simple-web-template.netlify.app/
 
 by: https://www.instagram.com/engelberthrb/

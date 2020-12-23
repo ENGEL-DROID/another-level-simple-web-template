@@ -13,19 +13,66 @@
                 // Finalmente se programa todo el código requerido:
                 $("body").hide().fadeIn(2000); // método para aparecer gradualmente
                 $("#images div").hide().fadeIn(4000); // método para aparecer elementos
-                $("button") // método para dar estilo a elementos
+                $("#comprar") // método para dar estilo a elementos
                 .width("80%")
                 .height("4vh")
                 .html("Comprar")
                 .css({backgroundColor: '#d1b6d1af', border: '0px', color: '#ffe9ff', marginTop: '2%', marginLeft: 'auto', marginRight: 'auto'});
                 $("h2").html("changing the game"); // cambiar el texto de un elemento
-                $("button").append(" o Reservar"); // agrega texto a un elemento
-
-            })
+                $("#comprar").append(" o Reservar"); // agrega texto a un elemento
+                $("#banner").hide(); // Ocultar un elemento para aparecer luego
+                $("#banner").delay(3000).fadeIn(1000); // Aparecer elemento oculto
+                // var z= document.getElementById("cerrar"); // se crea la variable con el objeto a usar como botón de cierre
+                // z.addEventListener("click", cerrar_banner, false); // se agrega el oyente al objeto a usar como botón de cierre
+                document.getElementById("cerrar").addEventListener("click", cerrar_banner, false); // Igual que lo anterior pero con jQuery
+                var images= document.querySelectorAll("#images div"); // se crea un array
+                for (var i=0; i<images.length; i++) { // se agrega el oyente a cada elemento del array:
+                    images[i].addEventListener("click", carrito, false);
+                }
+                document.getElementById("btnNavTop").addEventListener("click", classTop, false); // se agrega el oyente al botón de Top Ventas
+                document.getElementById("btnNavNew").addEventListener("click", classNew, false); // se agrega el oyente al botón de Nuevos
+            });
+            function cerrar_banner(){
+                $("#banner").remove(); // método para remover un elemento
+            }
+            function carrito(num) {
+                // console.log("Ha entrado a la función de carrito");
+                if (num.target==img1) {
+                    $("#img1").replaceWith("<div id='img1'>Agregado al carrito <br/> &#10004; </div>");
+                } else if (num.target==img2) {
+                    $("#img2").replaceWith("<div id='img2'>Agregado al carrito <br/> &#10004; </div>");
+                } else if (num.target==img3) {
+                    $("#img3").replaceWith("<div id='img3'>Agregado al carrito <br/> &#10004; </div>");
+                } else if (num.target==img4) {
+                    $("#img4").replaceWith("<div id='img4'>Agregado al carrito <br/> &#10004; </div>");
+                }
+            }
+            function classTop() { // se crea la función para agregar el formato nuevo
+                $(".btnNew").removeClass("resaltar");
+                $(".btnTop").addClass("resaltar");
+                // $(".btnTop").toggleClass("resaltar"); // en caso de on-off
+            }
+            function classNew() { // se crea la función para agregar el formato nuevo 
+                $(".btnTop").removeClass("resaltar");
+                $(".btnNew").addClass("resaltar");
+                // $(".btnNew").toggleClass("resaltar"); // en caso de on-off
+            }
         </script>
     </head>
     <body>
-
+        <table>
+            <tr>
+                <td> <button id="btnNavTop" class="btnNav">Top ventas</button> </td>
+                <td> <button id="btnNavNew" class="btnNav">Nuevos</button> </td>
+                <td> <a class="btnTop" href="index.html">Mooner</a> </td>
+                <td> <a class="btnTop" href="index.html">Australic</a> </td>
+                <td> <a class="btnNew" href="index.html">27EOA</a> </td>
+                <td> <a class="btnTop" href="index.html">Galaxjon</a> </td>
+                <td> <a class="btnNew" href="index.html">Martian23</a> </td>
+                <td> <a class="btnNew" href="index.html">iConex</a> </td>
+                <td> <a class="btnTop" href="index.html">Sunner-A</a> </td>
+            </tr>
+        </table>
         <div class="contenedor">
             <h1>Another level</h1>
             <h2>Designs from another world</h2>
@@ -35,10 +82,14 @@
                 <div id="img3"></div>
                 <div id="img4"></div>
             </div>
-            <button></button>
+            <button id="comprar"></button>
+            <div id="banner">
+                <img src="bike-girl.gif" alt="gif" id="gif">
+                <button id="cerrar">X</button>
+            </div>
         </div>
 
-        <!-- S´ólo de prueba para seleccionar color: -->
+        <!-- Sólo de prueba para seleccionar color: -->
         <a href="" style="color: #d1b6d1af;"></a>
     
     </body>
